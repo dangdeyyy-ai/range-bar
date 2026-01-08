@@ -40,13 +40,15 @@ sliderInput.forEach((slide) => {
     });
 });
 
-priceInput.forEach((input) => {
-    input.addEventListener("input", (e) => {
-        if (input.max - input.min >= priceGap && maxInput <= 5000) {
+priceInput.forEach((el) => {
+    el.addEventListener("input", (e) => {
+        let minNum = parseInt(priceInput[0].value) || 0;
+        let maxNum = parseInt(priceInput[1].value) || 0;
+        if (maxNum - minNum >= priceGap && maxNum <= 5000) {
             if (e.target.classList.contains("input-min")) {
-                sliderInput[0].value = input.min;
+                sliderInput[0].value = minNum;
             } else {
-                sliderInput[1].value = input.max;
+                sliderInput[1].value = maxNum;
             }
             updateDisplay();
         }
